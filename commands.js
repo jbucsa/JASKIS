@@ -166,6 +166,30 @@
 
 // 2. Remove Lokinkajou
 
+>db.bounties.deleteOne({"name": "Lokinkajou"})
+
+>{
+  acknowledged: true,
+  deletedCount: 1
+}
+
 // 3. Delete all bounties sent by Songbird
 
+>db.bounties.deleteMany({"client": "Songbird"})
+
+>{
+  acknowledged: true,
+  deletedCount: 2
+}
+
 // 4. Update all captured statuses to true
+
+>db.bounties.updateMany( {"captured": "false"}, { $set: {captured: true}})
+
+<{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
